@@ -5,27 +5,35 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-card",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-border bg-background hover:bg-secondary hover:text-secondary-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-secondary hover:text-secondary-foreground",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:shadow-lg hover:-translate-y-0.5",
+        outline:
+          "border-2 border-border bg-transparent hover:bg-secondary hover:border-accent hover:text-accent",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md",
+        ghost: "hover:bg-accent/10 hover:text-accent",
         link: "text-accent underline-offset-4 hover:underline",
-        // Custom variants for Train ICSI
-        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-soft hover:shadow-glow",
-        hero: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-glow font-semibold",
-        "hero-outline": "border-2 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20 backdrop-blur-sm",
-        cta: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-card hover:shadow-elevated font-semibold",
+        // Premium variants
+        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-md hover:shadow-glow hover:-translate-y-0.5",
+        cta: "bg-accent text-accent-foreground shadow-lg hover:shadow-glow hover:-translate-y-1 hover:bg-accent/90 font-bold",
+        premium: "bg-gradient-to-r from-highlight to-yellow-400 text-highlight-foreground shadow-lg hover:shadow-glow-gold hover:-translate-y-1 font-bold",
+        // Hero variants for dark backgrounds
+        hero: "bg-white text-primary shadow-lg hover:shadow-xl hover:-translate-y-1 font-bold",
+        "hero-outline": "border-2 border-white/30 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20 hover:border-white/50",
+        "hero-accent": "bg-accent text-accent-foreground shadow-lg shadow-accent/30 hover:shadow-glow hover:-translate-y-1 font-bold",
+        // Glass variant
+        glass: "bg-card/80 backdrop-blur-xl border border-border/50 hover:bg-card hover:shadow-lg hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-5 py-2",
-        sm: "h-9 rounded-md px-4",
+        sm: "h-9 rounded-md px-4 text-xs",
         lg: "h-12 rounded-lg px-8 text-base",
-        xl: "h-14 rounded-lg px-10 text-lg",
+        xl: "h-14 rounded-xl px-10 text-lg",
         icon: "h-10 w-10",
       },
     },
@@ -33,7 +41,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -45,8 +53,14 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
-  },
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
 );
 Button.displayName = "Button";
 

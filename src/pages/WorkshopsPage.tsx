@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Calendar, Clock, MapPin, Users, GraduationCap, Building2, Award, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Calendar, Clock, MapPin, Users, GraduationCap, Building2, Award, ChevronRight, Sparkles, Star, Zap } from "lucide-react";
 
 const workshops = [
   {
@@ -48,48 +48,71 @@ const WorkshopsPage = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 lg:py-28 bg-hero text-primary-foreground">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative py-24 lg:py-32 bg-hero overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-10 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
+          <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">Workshops & Webinars</span>
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
-              Hands-On ICSI Simulation Training
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20 animate-fade-in">
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium text-white/90">Learn from Industry Experts</span>
+            </div>
+            
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              Hands-On ICSI Simulation
+              <span className="block text-accent mt-2">Training Workshops</span>
             </h1>
-            <p className="text-lg text-primary-foreground/80 mb-8">
-              Join our expert-led workshops to master micromanipulation techniques using state-of-the-art 
-              simulation technology. Perfect for embryology students, faculty, and practicing professionals.
+            
+            <p className="text-lg md:text-xl text-white/80 mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              Master micromanipulation techniques using state-of-the-art simulation technology. 
+              Perfect for embryology students, faculty, and professionals.
             </p>
-            <div className="flex items-center justify-center gap-2 text-accent">
-              <span className="font-display text-4xl font-bold">₹3,000</span>
-              <span className="text-primary-foreground/70">per participant</span>
+            
+            <div className="inline-flex items-baseline gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <span className="font-display text-5xl font-bold text-white">₹3,000</span>
+              <span className="text-white/60">per participant</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Workshop Format */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 bg-gradient-subtle relative">
+        <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+            <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
+              <Zap className="w-4 h-4" />
               Workshop Format
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground">
+              Structured Learning for <span className="text-gradient">Maximum Impact</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Our structured approach ensures maximum skill development in every session.
+              Our proven methodology ensures every participant leaves with practical, applicable skills.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 mb-16">
             {[
-              { time: "1 hour", title: "Theory & Fundamentals", description: "Core concepts and procedure protocols" },
-              { time: "1.5 hours", title: "Expert Demonstration", description: "Live walkthrough on the simulator" },
-              { time: "3 hours", title: "Hands-On Practice", description: "Supervised individual practice sessions" },
-              { time: "30 min", title: "Assessment & Feedback", description: "Performance review and certification" },
+              { time: "1 hour", title: "Theory & Fundamentals", description: "Core concepts and procedure protocols", icon: "📚" },
+              { time: "1.5 hours", title: "Expert Demonstration", description: "Live walkthrough on the simulator", icon: "👨‍🏫" },
+              { time: "3 hours", title: "Hands-On Practice", description: "Supervised individual practice sessions", icon: "🔬" },
+              { time: "30 min", title: "Assessment & Feedback", description: "Performance review and certification", icon: "🎓" },
             ].map((item, index) => (
-              <div key={index} className="relative">
-                <div className="bg-card rounded-xl p-6 shadow-card border border-border h-full">
-                  <div className="text-accent font-semibold text-sm mb-2">{item.time}</div>
-                  <h3 className="font-display text-lg font-semibold mb-2">{item.title}</h3>
+              <div key={index} className="relative group">
+                <div className="bg-card rounded-2xl p-6 shadow-card border border-border h-full hover-lift">
+                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <div className="inline-flex items-center gap-1 text-accent font-semibold text-sm mb-3 bg-accent/10 px-3 py-1 rounded-full">
+                    <Clock className="w-3 h-3" />
+                    {item.time}
+                  </div>
+                  <h3 className="font-display text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
                 {index < 3 && (
@@ -99,9 +122,13 @@ const WorkshopsPage = () => {
             ))}
           </div>
 
-          <div className="bg-secondary/50 rounded-2xl p-8 lg:p-12">
-            <h3 className="font-display text-2xl font-bold mb-8 text-center">What You'll Learn</h3>
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-card rounded-3xl p-8 lg:p-12 shadow-elevated border border-border">
+            <h3 className="font-display text-2xl font-bold mb-8 text-center flex items-center justify-center gap-3">
+              <Star className="w-6 h-6 text-highlight" />
+              What You'll Learn
+              <Star className="w-6 h-6 text-highlight" />
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 "ICSI procedure fundamentals and best practices",
                 "Optimal oocyte positioning and handling",
@@ -110,9 +137,12 @@ const WorkshopsPage = () => {
                 "Common errors and how to avoid them",
                 "Performance self-assessment methods",
               ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div 
+                  key={index} 
+                  className="flex items-start gap-3 p-4 rounded-xl bg-accent/5 border border-accent/10 hover:bg-accent/10 transition-colors"
+                >
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <span>{item}</span>
+                  <span className="text-foreground">{item}</span>
                 </div>
               ))}
             </div>
@@ -121,11 +151,14 @@ const WorkshopsPage = () => {
       </section>
 
       {/* Upcoming Workshops */}
-      <section className="py-20 lg:py-28 bg-gradient-subtle">
+      <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">Schedule</span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+            <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
+              <Calendar className="w-4 h-4" />
+              Schedule
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground">
               Upcoming Workshops
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -134,48 +167,51 @@ const WorkshopsPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {workshops.map((workshop) => (
+            {workshops.map((workshop, index) => (
               <div 
                 key={workshop.id}
                 onClick={() => setSelectedWorkshop(workshop.id)}
-                className={`bg-card rounded-xl p-6 shadow-card border-2 cursor-pointer transition-all duration-300 ${
+                className={`bg-card rounded-2xl p-6 shadow-card border-2 cursor-pointer transition-all duration-300 hover-lift ${
                   selectedWorkshop === workshop.id 
-                    ? "border-accent shadow-elevated" 
-                    : "border-border hover:border-accent/50"
+                    ? "border-accent shadow-glow" 
+                    : "border-transparent hover:border-accent/30"
                 }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <span className={`text-xs px-3 py-1 rounded-full font-medium ${
+                    <span className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-semibold ${
                       workshop.type === "Virtual" 
                         ? "bg-accent/10 text-accent" 
                         : "bg-primary/10 text-primary"
                     }`}>
-                      {workshop.type}
+                      {workshop.type === "Virtual" ? "🌐" : "🏫"} {workshop.type}
                     </span>
                   </div>
                   {workshop.seatsLeft !== null && (
-                    <span className="text-sm text-muted-foreground">
-                      {workshop.seatsLeft} / {workshop.totalSeats} seats
+                    <span className={`text-sm font-medium ${
+                      workshop.seatsLeft < 10 ? "text-destructive" : "text-muted-foreground"
+                    }`}>
+                      {workshop.seatsLeft < 10 && "🔥 "}{workshop.seatsLeft} / {workshop.totalSeats} seats
                     </span>
                   )}
                 </div>
                 
-                <h3 className="font-display text-xl font-semibold mb-4">{workshop.date}</h3>
+                <h3 className="font-display text-2xl font-bold mb-4 text-foreground">{workshop.date}</h3>
                 
-                <div className="space-y-2 text-sm text-muted-foreground">
+                <div className="space-y-2 text-sm text-muted-foreground mb-4">
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-4 h-4 text-accent" />
                     <span>{workshop.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-accent" />
                     <span>{workshop.location}</span>
                   </div>
                 </div>
 
                 {selectedWorkshop === workshop.id && (
-                  <div className="mt-6 pt-6 border-t border-border">
+                  <div className="mt-6 pt-6 border-t border-border animate-fade-in">
                     <Button variant="cta" className="w-full" asChild>
                       <Link to="/contact">
                         Register Now - ₹3,000
@@ -201,11 +237,12 @@ const WorkshopsPage = () => {
       </section>
 
       {/* Benefits by Role */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 bg-gradient-subtle relative">
+        <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-              Benefits for Everyone
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground">
+              Benefits for <span className="text-gradient">Everyone</span>
             </h2>
           </div>
 
@@ -214,6 +251,7 @@ const WorkshopsPage = () => {
               {
                 icon: GraduationCap,
                 title: "For Students",
+                color: "accent",
                 benefits: [
                   "Hands-on practice before clinical rotation",
                   "Build confidence with risk-free training",
@@ -225,6 +263,7 @@ const WorkshopsPage = () => {
               {
                 icon: Users,
                 title: "For Faculty",
+                color: "primary",
                 benefits: [
                   "Standardized teaching methodology",
                   "Objective student assessment tools",
@@ -236,6 +275,7 @@ const WorkshopsPage = () => {
               {
                 icon: Building2,
                 title: "For Institutions",
+                color: "highlight",
                 benefits: [
                   "Differentiated training program",
                   "Improved student outcomes",
@@ -247,17 +287,25 @@ const WorkshopsPage = () => {
             ].map((item, index) => (
               <div 
                 key={index} 
-                className="bg-card rounded-xl p-8 shadow-card border border-border"
+                className="bg-card rounded-2xl p-8 shadow-card border border-border hover-lift group"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-6">
-                  <item.icon className="w-7 h-7 text-primary-foreground" />
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
+                  item.color === "accent" ? "bg-accent/10 group-hover:bg-accent group-hover:shadow-glow" :
+                  item.color === "highlight" ? "bg-highlight/10 group-hover:bg-highlight group-hover:shadow-glow-gold" :
+                  "bg-primary/10 group-hover:bg-primary"
+                }`}>
+                  <item.icon className={`w-8 h-8 transition-colors ${
+                    item.color === "accent" ? "text-accent group-hover:text-white" :
+                    item.color === "highlight" ? "text-highlight group-hover:text-white" :
+                    "text-primary group-hover:text-white"
+                  }`} />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-6">{item.title}</h3>
+                <h3 className="font-display text-xl font-bold mb-6 text-foreground">{item.title}</h3>
                 <ul className="space-y-3">
                   {item.benefits.map((benefit, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{benefit}</span>
+                      <span className="text-sm text-muted-foreground">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -268,21 +316,21 @@ const WorkshopsPage = () => {
       </section>
 
       {/* Certification */}
-      <section className="py-20 lg:py-28 bg-gradient-subtle">
+      <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="w-20 h-20 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                <Award className="w-10 h-10 text-accent" />
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-highlight/20 to-highlight/5 flex items-center justify-center mb-6 shadow-glow-gold">
+                <Award className="w-10 h-10 text-highlight" />
               </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Certificate of Completion
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                Certificate of <span className="text-gradient-gold">Completion</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 All workshop participants who successfully complete the training program receive 
                 an official Train ICSI Certificate of Completion, validating their simulation training experience.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {[
                   "Recognized by partner institutions",
                   "Includes performance score",
@@ -290,20 +338,24 @@ const WorkshopsPage = () => {
                   "Verifiable credentials",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-accent" />
-                    <span>{item}</span>
+                    <div className="w-6 h-6 rounded-full bg-highlight/10 flex items-center justify-center">
+                      <CheckCircle2 className="w-4 h-4 text-highlight" />
+                    </div>
+                    <span className="text-foreground">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-card rounded-2xl p-8 shadow-elevated border border-border">
-              <div className="aspect-[4/3] bg-secondary/50 rounded-xl flex items-center justify-center border border-border">
-                <div className="text-center p-8">
-                  <div className="w-16 h-16 rounded-full bg-primary mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-primary-foreground font-display font-bold text-2xl">T</span>
+            <div className="bg-card rounded-3xl p-8 shadow-elevated border border-border">
+              <div className="aspect-[4/3] bg-gradient-subtle rounded-2xl flex items-center justify-center border border-border relative overflow-hidden">
+                <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+                <div className="text-center p-8 relative z-10">
+                  <div className="w-20 h-20 rounded-2xl bg-primary mx-auto mb-4 flex items-center justify-center shadow-lg">
+                    <span className="text-white font-display font-bold text-3xl">T</span>
                   </div>
-                  <h4 className="font-display font-bold text-lg mb-1">Certificate of Completion</h4>
+                  <h4 className="font-display font-bold text-xl mb-1 text-foreground">Certificate of Completion</h4>
                   <p className="text-sm text-muted-foreground mb-4">ICSI Simulation Workshop</p>
+                  <div className="w-24 h-0.5 bg-highlight mx-auto mb-4" />
                   <div className="text-xs text-muted-foreground">
                     Train ICSI by Shreeji Medtech
                   </div>
@@ -317,26 +369,39 @@ const WorkshopsPage = () => {
       {/* CTA Section */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="bg-hero rounded-2xl p-8 lg:p-16 text-primary-foreground text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-              Ready to Elevate Your Training?
-            </h2>
-            <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-              Join hundreds of embryology professionals who have enhanced their skills through 
-              our simulation-based workshops.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/contact">
-                  Register for Workshop
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-              <Button variant="hero-outline" size="xl" asChild>
-                <Link to="/contact">
-                  Request Custom Workshop
-                </Link>
-              </Button>
+          <div className="bg-hero rounded-3xl p-8 lg:p-16 text-white text-center relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute inset-0">
+              <div className="absolute top-0 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-highlight/10 rounded-full blur-3xl" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium">Start Your Journey Today</span>
+              </div>
+              
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                Ready to Elevate Your Training?
+              </h2>
+              <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10">
+                Join hundreds of embryology professionals who have enhanced their skills through 
+                our simulation-based workshops.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="hero" size="xl" asChild>
+                  <Link to="/contact">
+                    Register for Workshop
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button variant="hero-outline" size="xl" asChild>
+                  <Link to="/contact">
+                    Request Custom Workshop
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
