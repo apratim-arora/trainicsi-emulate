@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Calendar, Clock, MapPin, Users, GraduationCap, Building2, Award, ChevronRight, Sparkles, Star, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, Calendar, Clock, MapPin, Users, GraduationCap, Building2, Award, ChevronRight, Sparkles, Star, Zap, ClipboardList } from "lucide-react";
+import WorkshopRegistrationForm from "@/components/WorkshopRegistrationForm";
 
 const workshops = [
   {
@@ -43,7 +44,15 @@ const workshops = [
 ];
 
 const WorkshopsPage = () => {
-  const [selectedWorkshop, setSelectedWorkshop] = useState<number | null>(null);
+  const [showRegistration, setShowRegistration] = useState(false);
+  const registrationRef = useRef<HTMLDivElement>(null);
+
+  const scrollToRegistration = () => {
+    setShowRegistration(true);
+    setTimeout(() => {
+      registrationRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  };
 
   return (
     <div className="flex flex-col">
@@ -162,7 +171,7 @@ const WorkshopsPage = () => {
               Upcoming Workshops
             </h2>
             <p className="text-lg text-muted-foreground">
-              Select a workshop to register. Limited seats available for on-campus sessions.
+              Browse available workshops below and register to secure your seat.
             </p>
           </div>
 
@@ -170,12 +179,7 @@ const WorkshopsPage = () => {
             {workshops.map((workshop, index) => (
               <div 
                 key={workshop.id}
-                onClick={() => setSelectedWorkshop(workshop.id)}
-                className={`bg-card rounded-2xl p-6 shadow-card border-2 cursor-pointer transition-all duration-300 hover-lift ${
-                  selectedWorkshop === workshop.id 
-                    ? "border-accent shadow-glow" 
-                    : "border-transparent hover:border-accent/30"
-                }`}
+                className="bg-card rounded-2xl p-6 shadow-card border-2 border-transparent hover:border-accent/30 transition-all duration-300 hover-lift"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -199,7 +203,7 @@ const WorkshopsPage = () => {
                 
                 <h3 className="font-display text-2xl font-bold mb-4 text-foreground">{workshop.date}</h3>
                 
-                <div className="space-y-2 text-sm text-muted-foreground mb-4">
+                <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-accent" />
                     <span>{workshop.time}</span>
@@ -209,23 +213,16 @@ const WorkshopsPage = () => {
                     <span>{workshop.location}</span>
                   </div>
                 </div>
-
-                {selectedWorkshop === workshop.id && (
-                  <div className="mt-6 pt-6 border-t border-border animate-fade-in">
-                    <Button variant="cta" className="w-full" asChild>
-                      <Link to="/contact">
-                        Register Now - ₹3,000
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                )}
               </div>
             ))}
           </div>
 
-          <div className="text-center">
-            <p className="text-muted-foreground mb-4">Don't see a workshop near you?</p>
+          <div className="text-center space-y-4">
+            <Button variant="cta" size="lg" onClick={scrollToRegistration}>
+              <ClipboardList className="w-5 h-5" />
+              Register for a Workshop
+            </Button>
+            <p className="text-muted-foreground">Don't see a workshop near you?</p>
             <Button variant="outline" size="lg" asChild>
               <Link to="/contact">
                 Request Custom Workshop at Your Institution
@@ -366,6 +363,32 @@ const WorkshopsPage = () => {
         </div>
       </section>
 
+      {/* Registration Form Section */}
+      {showRegistration && (
+        <section ref={registrationRef} className="py-20 lg:py-28 bg-gradient-subtle" id="register">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
+                  <ClipboardList className="w-4 h-4" />
+                  Registration
+                </span>
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                  Register for a Workshop
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Complete the form below to secure your seat
+                </p>
+              </div>
+              <WorkshopRegistrationForm 
+                workshops={workshops} 
+                onClose={() => setShowRegistration(false)} 
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA Section */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
@@ -390,11 +413,9 @@ const WorkshopsPage = () => {
                 our simulation-based workshops.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="hero" size="xl" asChild>
-                  <Link to="/contact">
-                    Register for Workshop
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
+                <Button variant="hero" size="xl" onClick={scrollToRegistration}>
+                  Register for Workshop
+                  <ArrowRight className="w-5 h-5" />
                 </Button>
                 <Button variant="hero-outline" size="xl" asChild>
                   <Link to="/contact">
