@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, CheckCircle2, AlertTriangle, Target, Users, GraduationCap, Building2, Calendar, ChevronRight, Award, TrendingUp, Shield, Sparkles, Star, Zap } from "lucide-react";
+import { ArrowRight, Play, CheckCircle2, AlertTriangle, Target, Users, GraduationCap, Building2, Calendar, ChevronRight, Award, TrendingUp, Shield, Sparkles, Star, Zap, UserCheck, Handshake } from "lucide-react";
 import simulatorHero from "@/assets/simulator-hero.jpg";
 import softwareInterface from "@/assets/software-interface.jpg";
 
@@ -417,6 +417,127 @@ const HomePage = () => {
                 <div className="text-sm text-white/60">{item.description}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clinical Validation Partners Section */}
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
+              <UserCheck className="w-4 h-4" />
+              Clinical Validation
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              Clinical <span className="text-gradient">Validation Partners</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Expert embryologists and clinicians who guided our product development to ensure clinical accuracy and real-world applicability.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                name: "Dr. Priya Sharma",
+                title: "Senior Embryologist",
+                institution: "Mumbai Fertility Center",
+                experience: "15+ years",
+              },
+              {
+                name: "Dr. Rajesh Kumar",
+                title: "Clinical Director",
+                institution: "Delhi IVF Institute",
+                experience: "20+ years",
+              },
+              {
+                name: "Dr. Anita Patel",
+                title: "Lead Embryologist",
+                institution: "Bangalore Reproductive Sciences",
+                experience: "12+ years",
+              },
+              {
+                name: "Dr. Vikram Singh",
+                title: "IVF Specialist",
+                institution: "Chennai Fertility Hospital",
+                experience: "18+ years",
+              },
+            ].map((partner, index) => (
+              <div 
+                key={index} 
+                className="bg-card rounded-2xl p-6 shadow-card border border-border hover-lift group text-center"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center border-2 border-accent/30 group-hover:border-accent transition-colors">
+                  <span className="font-display text-2xl font-bold text-accent">
+                    {partner.name.split(' ').map(n => n[0]).join('')}
+                  </span>
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground mb-1">{partner.name}</h3>
+                <p className="text-accent text-sm font-medium mb-2">{partner.title}</p>
+                <p className="text-muted-foreground text-sm mb-3">{partner.institution}</p>
+                <span className="inline-flex items-center gap-1 text-xs bg-accent/10 text-accent px-3 py-1 rounded-full">
+                  <Award className="w-3 h-3" />
+                  {partner.experience}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Academic Facilitators Section */}
+      <section className="py-24 lg:py-32 bg-gradient-subtle relative">
+        <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+              <Handshake className="w-4 h-4" />
+              Collaborations
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              Academic <span className="text-gradient">Facilitators</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Institutions and organizations that have collaborated with us throughout our journey.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { name: "Mumbai Medical College", shortName: "MMC" },
+              { name: "Delhi IVF Academy", shortName: "DIA" },
+              { name: "Bangalore Institute of Embryology", shortName: "BIE" },
+              { name: "Chennai Fertility Research", shortName: "CFR" },
+              { name: "Hyderabad Reproductive Sciences", shortName: "HRS" },
+              { name: "Pune Medical University", shortName: "PMU" },
+            ].map((institution, index) => (
+              <div 
+                key={index} 
+                className="bg-card rounded-xl p-6 shadow-card border border-border hover-lift group flex flex-col items-center justify-center min-h-[140px]"
+              >
+                <div className="w-16 h-16 rounded-xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-3 transition-all duration-300">
+                  <span className="font-display text-lg font-bold text-primary group-hover:text-white transition-colors">
+                    {institution.shortName}
+                  </span>
+                </div>
+                <p className="text-sm text-center text-muted-foreground group-hover:text-foreground transition-colors font-medium">
+                  {institution.name}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-6">
+              Interested in becoming a partner institution?
+            </p>
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/contact">
+                Partner With Us
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
