@@ -31,7 +31,7 @@ const ContactPage = () => {
 
   const inquiryTypes = [
     { id: "workshop" as InquiryType, icon: GraduationCap, label: "Workshop Request", description: "Request a workshop at your institution" },
-    { id: "demo" as InquiryType, icon: Building2, label: "Simulator Demo", description: "Schedule a product demonstration" },
+    { id: "demo" as InquiryType, icon: Building2, label: "Simulator Enquiry/Demo", description: "Schedule a product demonstration" },
     { id: "institution" as InquiryType, icon: Users, label: "Institutional Enquiry", description: "Pricing and acquisition information" },
     { id: "partnership" as InquiryType, icon: Handshake, label: "Partnership", description: "Collaboration and partnership opportunities" },
   ];
