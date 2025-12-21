@@ -422,9 +422,13 @@ const HomePage = () => {
       </section>
 
       {/* Clinical Validation Partners Section */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+      <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="container mx-auto px-4 lg:px-8 relative">
+          <div className="max-w-3xl mx-auto text-center mb-20">
             <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
               <UserCheck className="w-4 h-4" />
               Clinical Validation
@@ -432,54 +436,102 @@ const HomePage = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
               Clinical <span className="text-gradient">Validation Partners</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Expert embryologists and clinicians who guided our product development to ensure clinical accuracy and real-world applicability.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
             {[
               {
                 name: "Dr. Priya Sharma",
                 title: "Senior Embryologist",
                 institution: "Mumbai Fertility Center",
                 experience: "15+ years",
+                specialty: "ICSI Specialist",
+                quote: "A revolutionary tool for training the next generation of embryologists.",
               },
               {
                 name: "Dr. Rajesh Kumar",
                 title: "Clinical Director",
                 institution: "Delhi IVF Institute",
                 experience: "20+ years",
+                specialty: "IVF & Genetics",
+                quote: "The simulation accuracy is remarkable and clinically relevant.",
               },
               {
                 name: "Dr. Anita Patel",
                 title: "Lead Embryologist",
                 institution: "Bangalore Reproductive Sciences",
                 experience: "12+ years",
+                specialty: "Embryo Biopsy",
+                quote: "Transforms how we prepare students for real procedures.",
               },
               {
                 name: "Dr. Vikram Singh",
                 title: "IVF Specialist",
                 institution: "Chennai Fertility Hospital",
                 experience: "18+ years",
+                specialty: "Micromanipulation",
+                quote: "Essential for any institution serious about embryology training.",
               },
             ].map((partner, index) => (
               <div 
                 key={index} 
-                className="bg-card rounded-2xl p-6 shadow-card border border-border hover-lift group text-center"
+                className="group relative bg-card rounded-3xl overflow-hidden shadow-elevated border border-border hover:shadow-2xl hover:border-accent/30 transition-all duration-500"
               >
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center border-2 border-accent/30 group-hover:border-accent transition-colors">
-                  <span className="font-display text-2xl font-bold text-accent">
-                    {partner.name.split(' ').map(n => n[0]).join('')}
-                  </span>
+                <div className="flex flex-col md:flex-row">
+                  {/* Large Image/Avatar Area */}
+                  <div className="relative w-full md:w-2/5 aspect-square md:aspect-auto bg-gradient-to-br from-primary via-primary/80 to-accent overflow-hidden">
+                    {/* Decorative pattern */}
+                    <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
+                    
+                    {/* Avatar initials */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative">
+                        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-4 border-white/30 group-hover:scale-110 group-hover:border-accent transition-all duration-500 shadow-2xl">
+                          <span className="font-display text-5xl md:text-6xl font-bold text-white">
+                            {partner.name.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 w-32 h-32 md:w-40 md:h-40 rounded-full bg-accent/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                    </div>
+                    
+                    {/* Experience badge */}
+                    <div className="absolute bottom-4 left-4 right-4 md:right-auto">
+                      <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm text-primary px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+                        <Award className="w-4 h-4 text-accent" />
+                        {partner.experience} Experience
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Content Area */}
+                  <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
+                    <div className="mb-4">
+                      <span className="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                        {partner.specialty}
+                      </span>
+                      <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                        {partner.name}
+                      </h3>
+                      <p className="text-accent font-semibold text-lg">{partner.title}</p>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 text-muted-foreground mb-6">
+                      <Building2 className="w-4 h-4" />
+                      <span>{partner.institution}</span>
+                    </div>
+                    
+                    {/* Quote */}
+                    <blockquote className="relative pl-5 border-l-4 border-accent/50 italic text-muted-foreground group-hover:border-accent transition-colors">
+                      "{partner.quote}"
+                    </blockquote>
+                  </div>
                 </div>
-                <h3 className="font-display text-lg font-bold text-foreground mb-1">{partner.name}</h3>
-                <p className="text-accent text-sm font-medium mb-2">{partner.title}</p>
-                <p className="text-muted-foreground text-sm mb-3">{partner.institution}</p>
-                <span className="inline-flex items-center gap-1 text-xs bg-accent/10 text-accent px-3 py-1 rounded-full">
-                  <Award className="w-3 h-3" />
-                  {partner.experience}
-                </span>
               </div>
             ))}
           </div>
@@ -487,57 +539,93 @@ const HomePage = () => {
       </section>
 
       {/* Academic Facilitators Section */}
-      <section className="py-24 lg:py-32 bg-gradient-subtle relative">
-        <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+      <section className="py-24 lg:py-32 bg-hero relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
+          <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+        </div>
+        
         <div className="container mx-auto px-4 lg:px-8 relative">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wider mb-4">
               <Handshake className="w-4 h-4" />
               Collaborations
             </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-              Academic <span className="text-gradient">Facilitators</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+              Academic <span className="text-accent">Facilitators</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Institutions and organizations that have collaborated with us throughout our journey.
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Prestigious institutions and organizations that have collaborated with us throughout our journey.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: "Mumbai Medical College", shortName: "MMC" },
-              { name: "Delhi IVF Academy", shortName: "DIA" },
-              { name: "Bangalore Institute of Embryology", shortName: "BIE" },
-              { name: "Chennai Fertility Research", shortName: "CFR" },
-              { name: "Hyderabad Reproductive Sciences", shortName: "HRS" },
-              { name: "Pune Medical University", shortName: "PMU" },
+              { name: "Mumbai Medical College", shortName: "MMC", type: "Medical University", established: "Est. 1845" },
+              { name: "Delhi IVF Academy", shortName: "DIA", type: "Research Institute", established: "Est. 1998" },
+              { name: "Bangalore Institute of Embryology", shortName: "BIE", type: "Specialty Institute", established: "Est. 2005" },
+              { name: "Chennai Fertility Research", shortName: "CFR", type: "Research Center", established: "Est. 2001" },
+              { name: "Hyderabad Reproductive Sciences", shortName: "HRS", type: "Medical Center", established: "Est. 2010" },
+              { name: "Pune Medical University", shortName: "PMU", type: "Medical University", established: "Est. 1950" },
             ].map((institution, index) => (
               <div 
                 key={index} 
-                className="bg-card rounded-xl p-6 shadow-card border border-border hover-lift group flex flex-col items-center justify-center min-h-[140px]"
+                className="group relative bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 hover:border-accent/50 hover:bg-white/10 transition-all duration-500 overflow-hidden"
               >
-                <div className="w-16 h-16 rounded-xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mb-3 transition-all duration-300">
-                  <span className="font-display text-lg font-bold text-primary group-hover:text-white transition-colors">
-                    {institution.shortName}
-                  </span>
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-bl-[100px] group-hover:bg-accent/30 transition-colors" />
+                
+                <div className="p-8 md:p-10">
+                  {/* Large Logo Area */}
+                  <div className="relative mb-8">
+                    <div className="w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm flex items-center justify-center border-2 border-white/20 group-hover:border-accent/50 group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                      <span className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-accent transition-colors">
+                        {institution.shortName}
+                      </span>
+                    </div>
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-accent/30 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 -z-10" />
+                  </div>
+                  
+                  {/* Institution Info */}
+                  <div className="space-y-3">
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors">
+                      {institution.name}
+                    </h3>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="text-sm text-white/60 bg-white/10 px-3 py-1 rounded-full">
+                        {institution.type}
+                      </span>
+                      <span className="text-sm text-accent">
+                        {institution.established}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Decorative line */}
+                  <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-2 text-white/50 group-hover:text-accent/70 transition-colors">
+                    <Star className="w-4 h-4" />
+                    <span className="text-sm font-medium">Partner Institution</span>
+                  </div>
                 </div>
-                <p className="text-sm text-center text-muted-foreground group-hover:text-foreground transition-colors font-medium">
-                  {institution.name}
-                </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-6">
-              Interested in becoming a partner institution?
-            </p>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/contact">
-                Partner With Us
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+          <div className="mt-16 text-center">
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+              <p className="text-white/80">
+                Interested in becoming a partner institution?
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact">
+                  Partner With Us
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
