@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoHorizontal from "@/assets/logo-horizontal.svg";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -34,12 +33,16 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
-            <img 
-              src={logoHorizontal} 
-              alt="Train ICSI by Shreeji Medtech" 
-              className="h-10 lg:h-12 w-auto group-hover:opacity-90 transition-opacity"
-            />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-11 h-11 rounded-xl bg-hero flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:-translate-y-0.5">
+              <span className="text-white font-display font-bold text-xl">T</span>
+            </div>
+            <div className="flex flex-col">
+              <span className={`font-display font-bold text-lg leading-tight transition-colors ${
+                scrolled ? "text-foreground" : "text-foreground"
+              }`}>Train ICSI</span>
+              <span className="text-[10px] text-muted-foreground leading-tight">by Shreeji Medtech</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
