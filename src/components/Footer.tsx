@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
+import logoStacked from "@/assets/logo-stacked.svg";
 
 export const Footer = () => {
   return (
@@ -14,14 +15,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shadow-lg">
-                <span className="text-accent-foreground font-display font-bold text-xl">T</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-tight">Train ICSI</span>
-                <span className="text-xs text-primary-foreground/60 leading-tight">by Shreeji Medtech</span>
-              </div>
+            <div className="mb-6">
+              <img 
+                src={logoStacked} 
+                alt="Train ICSI by Shreeji Medtech" 
+                className="h-24 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
               Advancing embryology education through high-fidelity simulation technology. 
