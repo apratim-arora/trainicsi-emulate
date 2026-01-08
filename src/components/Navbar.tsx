@@ -33,7 +33,7 @@ export const Navbar = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled 
         ? "bg-card/95 backdrop-blur-xl border-b border-border/50 shadow-lg" 
-        : "bg-gradient-to-b from-primary/20 to-transparent backdrop-blur-sm"
+        : "bg-primary/90 backdrop-blur-md border-b border-white/10"
     }`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${
@@ -41,7 +41,7 @@ export const Navbar = () => {
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className={`rounded-xl bg-gradient-to-br from-accent via-primary to-accent/80 flex items-center justify-center shadow-lg group-hover:shadow-accent/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 ${
+            <div className={`rounded-xl bg-gradient-to-br from-accent via-accent/80 to-accent/60 flex items-center justify-center shadow-lg group-hover:shadow-accent/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 ${
               scrolled ? "w-10 h-10" : "w-11 h-11"
             }`}>
               <span className="text-white font-display font-bold text-xl">T</span>
@@ -59,20 +59,20 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md rounded-full px-2 py-1.5 border border-white/10">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative ${
+                className={`text-sm font-medium transition-all duration-300 relative py-1 ${
                   location.pathname === item.path
                     ? scrolled 
-                      ? "bg-accent text-white shadow-md" 
-                      : "bg-white/20 text-white"
+                      ? "text-accent" 
+                      : "text-white"
                     : scrolled 
-                      ? "text-muted-foreground hover:text-foreground hover:bg-secondary/80" 
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
+                      ? "text-muted-foreground hover:text-foreground" 
+                      : "text-white/80 hover:text-white"
+                } ${location.pathname === item.path ? "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent after:rounded-full" : ""}`}
               >
                 {item.name}
               </Link>
@@ -130,7 +130,7 @@ export const Navbar = () => {
           ? "opacity-100 translate-y-0 pointer-events-auto" 
           : "opacity-0 -translate-y-4 pointer-events-none"
       }`}>
-        <div className="mx-4 mt-2 bg-card/98 backdrop-blur-xl rounded-2xl border border-border/50 shadow-2xl overflow-hidden">
+        <div className="mx-4 mt-2 bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
           {/* Decorative gradient line */}
           <div className="h-1 bg-gradient-to-r from-accent via-primary to-accent/60" />
           
