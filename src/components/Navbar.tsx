@@ -51,7 +51,7 @@ export const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
+                className={`px-5 py-2.5 rounded-lg text-base font-medium transition-all duration-300 relative ${
                   location.pathname === item.path
                     ? "text-accent"
                     : "text-muted-foreground hover:text-foreground"
@@ -66,13 +66,13 @@ export const Navbar = () => {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
+          <div className="hidden lg:flex items-center gap-4">
+            <Button variant="ghost" size="default" asChild>
               <Link to="/workshops">View Workshops</Link>
             </Button>
-            <Button variant="accent" size="sm" asChild className="gap-2">
+            <Button variant="accent" size="default" asChild className="gap-2">
               <Link to="/contact">
-                <Sparkles className="w-4 h-4" />
+                <Sparkles className="w-5 h-5" />
                 Request Demo
               </Link>
             </Button>
