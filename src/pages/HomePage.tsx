@@ -6,7 +6,7 @@ import softwareInterface from "@/assets/software-interface.jpg";
 const HomePage = () => {
   return <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] bg-hero flex items-center overflow-hidden">
+      <section className="relative h-screen max-h-[900px] min-h-[700px] bg-hero flex items-center overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
@@ -16,30 +16,38 @@ const HomePage = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl animate-spin-slow" />
           <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         </div>
+
+        {/* Hero image as background for tablet/mobile */}
+        <div 
+          className="absolute inset-0 lg:hidden bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${simulatorHero})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+        </div>
         
-        <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-white">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-white/20 animate-fade-in">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-6 lg:mb-8 border border-white/20 animate-fade-in">
                 <Sparkles className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium">India's First ICSI Simulation System</span>
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in" style={{
+              <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 lg:mb-6 animate-fade-in" style={{
               animationDelay: "0.1s"
             }}>
                 Advanced ICSI & Embryo Biopsy
                 <span className="block text-accent mt-2">Simulation Training</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-xl animate-fade-in" style={{
+              <p className="text-base md:text-lg lg:text-xl text-white/80 mb-8 lg:mb-10 leading-relaxed max-w-xl animate-fade-in" style={{
               animationDelay: "0.2s"
             }}>
                 Master micromanipulation skills with realistic, risk-free practice. 
                 Our institutional-grade simulation system bridges the gap between theory and clinical proficiency.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 animate-fade-in" style={{
               animationDelay: "0.3s"
             }}>
                 <Button variant="hero" size="xl" asChild>
@@ -56,7 +64,7 @@ const HomePage = () => {
                 </Button>
               </div>
 
-              <div className="flex items-center gap-10 mt-12 pt-10 border-t border-white/10 animate-fade-in" style={{
+              <div className="flex flex-wrap items-center gap-6 lg:gap-10 mt-8 lg:mt-12 pt-6 lg:pt-10 border-t border-white/10 animate-fade-in" style={{
               animationDelay: "0.4s"
             }}>
                 {[{
@@ -69,13 +77,14 @@ const HomePage = () => {
                 value: "98%",
                 label: "Satisfaction Rate"
               }].map((stat, index) => <div key={index}>
-                    <div className="font-display text-3xl lg:text-4xl font-bold text-white">{stat.value}</div>
-                    <div className="text-sm text-white/60">{stat.label}</div>
+                    <div className="font-display text-2xl lg:text-3xl xl:text-4xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs lg:text-sm text-white/60">{stat.label}</div>
                   </div>)}
               </div>
             </div>
 
-            <div className="relative animate-fade-in" style={{
+            {/* Desktop image - hidden on tablet/mobile */}
+            <div className="relative animate-fade-in hidden lg:block" style={{
             animationDelay: "0.3s"
           }}>
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
