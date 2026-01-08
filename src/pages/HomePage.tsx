@@ -3,16 +3,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, CheckCircle2, AlertTriangle, Target, Users, GraduationCap, Building2, Calendar, ChevronRight, Award, TrendingUp, Shield, Sparkles, Star, Zap, UserCheck, Handshake } from "lucide-react";
 import simulatorHero from "@/assets/simulator-hero.jpg";
 import softwareInterface from "@/assets/software-interface.jpg";
-
 const HomePage = () => {
-  return (
-    <div className="flex flex-col">
+  return <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative min-h-[95vh] bg-hero flex items-center overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
-          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{
+          animationDelay: "1s"
+        }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl animate-spin-slow" />
           <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         </div>
@@ -25,17 +25,23 @@ const HomePage = () => {
                 <span className="text-sm font-medium">India's First ICSI Simulation System</span>
               </div>
               
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in" style={{
+              animationDelay: "0.1s"
+            }}>
                 Advanced ICSI & Embryo Biopsy
                 <span className="block text-accent mt-2">Simulation Training</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-xl animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-xl animate-fade-in" style={{
+              animationDelay: "0.2s"
+            }}>
                 Master micromanipulation skills with realistic, risk-free practice. 
                 Our institutional-grade simulation system bridges the gap between theory and clinical proficiency.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{
+              animationDelay: "0.3s"
+            }}>
                 <Button variant="hero" size="xl" asChild>
                   <Link to="/contact">
                     Request College Workshop
@@ -50,35 +56,32 @@ const HomePage = () => {
                 </Button>
               </div>
 
-              <div className="flex items-center gap-10 mt-12 pt-10 border-t border-white/10 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                {[
-                  { value: "500+", label: "Trainees Certified" },
-                  { value: "25+", label: "Partner Institutions" },
-                  { value: "98%", label: "Satisfaction Rate" },
-                ].map((stat, index) => (
-                  <div key={index}>
+              <div className="flex items-center gap-10 mt-12 pt-10 border-t border-white/10 animate-fade-in" style={{
+              animationDelay: "0.4s"
+            }}>
+                {[{
+                value: "500+",
+                label: "Trainees Certified"
+              }, {
+                value: "25+",
+                label: "Partner Institutions"
+              }, {
+                value: "98%",
+                label: "Satisfaction Rate"
+              }].map((stat, index) => <div key={index}>
                     <div className="font-display text-3xl lg:text-4xl font-bold text-white">{stat.value}</div>
                     <div className="text-sm text-white/60">{stat.label}</div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
-            <div className="relative animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <div className="relative animate-fade-in" style={{
+            animationDelay: "0.3s"
+          }}>
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-                <img 
-                  src={simulatorHero} 
-                  alt="Train ICSI Micromanipulation Simulator System" 
-                  className="w-full h-auto"
-                />
+                <img src={simulatorHero} alt="Train ICSI Micromanipulation Simulator System" className="w-full h-auto" />
               </div>
-              <div className="absolute -bottom-8 -left-8 w-72 rounded-2xl overflow-hidden shadow-2xl border-4 border-card hidden lg:block animate-float">
-                <img 
-                  src={softwareInterface} 
-                  alt="ICSI Simulation Software Interface" 
-                  className="w-full h-auto"
-                />
-              </div>
+              
               {/* Floating badge */}
               <div className="absolute top-6 right-6 bg-card/95 backdrop-blur-xl rounded-2xl px-5 py-4 shadow-elevated border border-border animate-bounce-soft">
                 <div className="flex items-center gap-3">
@@ -114,34 +117,25 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: AlertTriangle,
-                title: "Limited Hands-On Practice",
-                description: "Students rarely get sufficient opportunity to practice micromanipulation techniques before working with real samples.",
-              },
-              {
-                icon: Shield,
-                title: "Consent & Sample Scarcity",
-                description: "Strict ethical guidelines and patient consent requirements severely limit access to real oocytes and embryos for training.",
-              },
-              {
-                icon: TrendingUp,
-                title: "High Stakes Learning",
-                description: "Mistakes during training on real samples are irreversible, creating pressure that hinders effective skill development.",
-              },
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                className="bg-card rounded-2xl p-8 shadow-card border border-border hover-lift group"
-              >
+            {[{
+            icon: AlertTriangle,
+            title: "Limited Hands-On Practice",
+            description: "Students rarely get sufficient opportunity to practice micromanipulation techniques before working with real samples."
+          }, {
+            icon: Shield,
+            title: "Consent & Sample Scarcity",
+            description: "Strict ethical guidelines and patient consent requirements severely limit access to real oocytes and embryos for training."
+          }, {
+            icon: TrendingUp,
+            title: "High Stakes Learning",
+            description: "Mistakes during training on real samples are irreversible, creating pressure that hinders effective skill development."
+          }].map((item, index) => <div key={index} className="bg-card rounded-2xl p-8 shadow-card border border-border hover-lift group">
                 <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:bg-destructive group-hover:scale-110 transition-all duration-300">
                   <item.icon className="w-8 h-8 text-destructive group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-display text-xl font-bold mb-3 text-foreground">{item.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -163,25 +157,19 @@ const HomePage = () => {
               </p>
 
               <div className="space-y-6">
-                {[
-                  {
-                    title: "Realistic Hardware",
-                    description: "Micromanipulator controls that look and feel like real equipment for authentic hand-eye coordination training.",
-                  },
-                  {
-                    title: "Immersive Software",
-                    description: "Simulates actual microscope environment for ICSI, embryo biopsy, and assisted hatching procedures.",
-                  },
-                  {
-                    title: "Performance Analytics",
-                    description: "Step-by-step analysis, error detection, scoring, and long-term progress tracking to identify improvement areas.",
-                  },
-                  {
-                    title: "Unlimited Practice",
-                    description: "Repeat procedures endlessly without sample constraints or ethical concerns.",
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="flex gap-4 p-4 rounded-xl hover:bg-accent/5 transition-colors">
+                {[{
+                title: "Realistic Hardware",
+                description: "Micromanipulator controls that look and feel like real equipment for authentic hand-eye coordination training."
+              }, {
+                title: "Immersive Software",
+                description: "Simulates actual microscope environment for ICSI, embryo biopsy, and assisted hatching procedures."
+              }, {
+                title: "Performance Analytics",
+                description: "Step-by-step analysis, error detection, scoring, and long-term progress tracking to identify improvement areas."
+              }, {
+                title: "Unlimited Practice",
+                description: "Repeat procedures endlessly without sample constraints or ethical concerns."
+              }].map((item, index) => <div key={index} className="flex gap-4 p-4 rounded-xl hover:bg-accent/5 transition-colors">
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
                       <CheckCircle2 className="w-5 h-5 text-accent" />
                     </div>
@@ -189,8 +177,7 @@ const HomePage = () => {
                       <h4 className="font-semibold mb-1 text-foreground">{item.title}</h4>
                       <p className="text-muted-foreground text-sm">{item.description}</p>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
 
               <div className="mt-10">
@@ -205,11 +192,7 @@ const HomePage = () => {
 
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-elevated border border-border">
-                <img 
-                  src={softwareInterface} 
-                  alt="Train ICSI Software Interface with Analytics" 
-                  className="w-full h-auto"
-                />
+                <img src={softwareInterface} alt="Train ICSI Software Interface with Analytics" className="w-full h-auto" />
               </div>
               <div className="absolute -bottom-8 -right-8 bg-card rounded-2xl p-6 shadow-elevated border border-border max-w-xs animate-float">
                 <div className="flex items-start gap-4">
@@ -245,24 +228,35 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 mb-16">
-            {[
-              { step: "01", title: "Theory Session", description: "Foundational concepts and procedure protocols", icon: "📚" },
-              { step: "02", title: "Live Demonstration", description: "Expert-led walkthrough on the simulator", icon: "👨‍🏫" },
-              { step: "03", title: "Hands-On Practice", description: "Supervised practice with real-time feedback", icon: "🔬" },
-              { step: "04", title: "Assessment", description: "Performance evaluation and certification", icon: "🎓" },
-            ].map((item, index) => (
-              <div key={index} className="relative">
+            {[{
+            step: "01",
+            title: "Theory Session",
+            description: "Foundational concepts and procedure protocols",
+            icon: "📚"
+          }, {
+            step: "02",
+            title: "Live Demonstration",
+            description: "Expert-led walkthrough on the simulator",
+            icon: "👨‍🏫"
+          }, {
+            step: "03",
+            title: "Hands-On Practice",
+            description: "Supervised practice with real-time feedback",
+            icon: "🔬"
+          }, {
+            step: "04",
+            title: "Assessment",
+            description: "Performance evaluation and certification",
+            icon: "🎓"
+          }].map((item, index) => <div key={index} className="relative">
                 <div className="bg-card rounded-2xl p-6 shadow-card border border-border h-full hover-lift group">
                   <div className="text-3xl mb-3">{item.icon}</div>
                   <span className="font-display text-4xl font-bold text-accent/20 group-hover:text-accent/40 transition-colors">{item.step}</span>
                   <h3 className="font-display text-lg font-bold mt-2 mb-2 text-foreground">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
-                {index < 3 && (
-                  <ChevronRight className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 w-6 h-6 text-accent z-10" />
-                )}
-              </div>
-            ))}
+                {index < 3 && <ChevronRight className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 w-6 h-6 text-accent z-10" />}
+              </div>)}
           </div>
 
           <div className="bg-card rounded-3xl p-8 lg:p-12 shadow-elevated border border-border">
@@ -289,25 +283,30 @@ const HomePage = () => {
                 </Button>
               </div>
               <div className="space-y-4">
-                {[
-                  { date: "Jan 15, 2025", location: "Mumbai Medical College", seats: "12 seats left", hot: true },
-                  { date: "Jan 28, 2025", location: "Online Webinar", seats: "Unlimited", hot: false },
-                  { date: "Feb 10, 2025", location: "Delhi IVF Academy", seats: "8 seats left", hot: true },
-                ].map((workshop, index) => (
-                  <div key={index} className="flex items-center justify-between p-5 rounded-xl bg-secondary/50 border border-border hover:bg-secondary transition-colors group">
+                {[{
+                date: "Jan 15, 2025",
+                location: "Mumbai Medical College",
+                seats: "12 seats left",
+                hot: true
+              }, {
+                date: "Jan 28, 2025",
+                location: "Online Webinar",
+                seats: "Unlimited",
+                hot: false
+              }, {
+                date: "Feb 10, 2025",
+                location: "Delhi IVF Academy",
+                seats: "8 seats left",
+                hot: true
+              }].map((workshop, index) => <div key={index} className="flex items-center justify-between p-5 rounded-xl bg-secondary/50 border border-border hover:bg-secondary transition-colors group">
                     <div>
                       <div className="font-semibold text-foreground">{workshop.date}</div>
                       <div className="text-sm text-muted-foreground">{workshop.location}</div>
                     </div>
-                    <span className={`text-xs px-3 py-1.5 rounded-full font-semibold ${
-                      workshop.hot 
-                        ? "bg-destructive/10 text-destructive" 
-                        : "bg-accent/10 text-accent"
-                    }`}>
+                    <span className={`text-xs px-3 py-1.5 rounded-full font-semibold ${workshop.hot ? "bg-destructive/10 text-destructive" : "bg-accent/10 text-accent"}`}>
                       {workshop.hot && "🔥 "}{workshop.seats}
                     </span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </div>
@@ -328,56 +327,37 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: GraduationCap,
-                title: "Embryology Colleges",
-                description: "Enhance your curriculum with cutting-edge simulation technology. Give students hands-on experience before clinical exposure.",
-                benefits: ["Curriculum integration", "Student skill assessment", "Faculty training support"],
-                color: "accent",
-              },
-              {
-                icon: Building2,
-                title: "IVF Clinics & Chains",
-                description: "Standardize training across locations. Ensure all embryologists meet consistent proficiency standards.",
-                benefits: ["Staff onboarding", "Skill standardization", "Quality assurance"],
-                color: "primary",
-              },
-              {
-                icon: Users,
-                title: "Training Institutions",
-                description: "Offer comprehensive embryology training programs with state-of-the-art simulation facilities.",
-                benefits: ["Differentiated offering", "Higher completion rates", "Industry recognition"],
-                color: "highlight",
-              },
-            ].map((item, index) => (
-              <div 
-                key={index} 
-                className="bg-card rounded-2xl p-8 shadow-card border border-border hover-lift group"
-              >
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
-                  item.color === "accent" ? "bg-accent/10 group-hover:bg-accent group-hover:shadow-glow" :
-                  item.color === "highlight" ? "bg-highlight/10 group-hover:bg-highlight group-hover:shadow-glow-gold" :
-                  "bg-primary/10 group-hover:bg-primary"
-                }`}>
-                  <item.icon className={`w-8 h-8 transition-colors ${
-                    item.color === "accent" ? "text-accent group-hover:text-white" :
-                    item.color === "highlight" ? "text-highlight group-hover:text-white" :
-                    "text-primary group-hover:text-white"
-                  }`} />
+            {[{
+            icon: GraduationCap,
+            title: "Embryology Colleges",
+            description: "Enhance your curriculum with cutting-edge simulation technology. Give students hands-on experience before clinical exposure.",
+            benefits: ["Curriculum integration", "Student skill assessment", "Faculty training support"],
+            color: "accent"
+          }, {
+            icon: Building2,
+            title: "IVF Clinics & Chains",
+            description: "Standardize training across locations. Ensure all embryologists meet consistent proficiency standards.",
+            benefits: ["Staff onboarding", "Skill standardization", "Quality assurance"],
+            color: "primary"
+          }, {
+            icon: Users,
+            title: "Training Institutions",
+            description: "Offer comprehensive embryology training programs with state-of-the-art simulation facilities.",
+            benefits: ["Differentiated offering", "Higher completion rates", "Industry recognition"],
+            color: "highlight"
+          }].map((item, index) => <div key={index} className="bg-card rounded-2xl p-8 shadow-card border border-border hover-lift group">
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${item.color === "accent" ? "bg-accent/10 group-hover:bg-accent group-hover:shadow-glow" : item.color === "highlight" ? "bg-highlight/10 group-hover:bg-highlight group-hover:shadow-glow-gold" : "bg-primary/10 group-hover:bg-primary"}`}>
+                  <item.icon className={`w-8 h-8 transition-colors ${item.color === "accent" ? "text-accent group-hover:text-white" : item.color === "highlight" ? "text-highlight group-hover:text-white" : "text-primary group-hover:text-white"}`} />
                 </div>
                 <h3 className="font-display text-xl font-bold mb-3 text-foreground">{item.title}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">{item.description}</p>
                 <ul className="space-y-2">
-                  {item.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
+                  {item.benefits.map((benefit, i) => <li key={i} className="flex items-center gap-2 text-sm">
                       <CheckCircle2 className="w-4 h-4 text-accent" />
                       <span className="text-foreground">{benefit}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -387,7 +367,9 @@ const HomePage = () => {
         {/* Background decorations */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{
+          animationDelay: "1s"
+        }} />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -405,18 +387,27 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { metric: "3x", label: "Faster Skill Acquisition", description: "Compared to observation-only training" },
-              { metric: "85%", label: "Error Reduction", description: "In first real procedure attempts" },
-              { metric: "40+", label: "Practice Hours", description: "Average before certification" },
-              { metric: "100%", label: "Safe Training", description: "Zero risk to real samples" },
-            ].map((item, index) => (
-              <div key={index} className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+            {[{
+            metric: "3x",
+            label: "Faster Skill Acquisition",
+            description: "Compared to observation-only training"
+          }, {
+            metric: "85%",
+            label: "Error Reduction",
+            description: "In first real procedure attempts"
+          }, {
+            metric: "40+",
+            label: "Practice Hours",
+            description: "Average before certification"
+          }, {
+            metric: "100%",
+            label: "Safe Training",
+            description: "Zero risk to real samples"
+          }].map((item, index) => <div key={index} className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
                 <div className="font-display text-5xl lg:text-6xl font-bold text-accent mb-3">{item.metric}</div>
                 <div className="font-semibold mb-1 text-white">{item.label}</div>
                 <div className="text-sm text-white/60">{item.description}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -442,44 +433,35 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-            {[
-              {
-                name: "Dr. Priya Sharma",
-                title: "Senior Embryologist",
-                institution: "Mumbai Fertility Center",
-                experience: "15+ years",
-                specialty: "ICSI Specialist",
-                quote: "A revolutionary tool for training the next generation of embryologists.",
-              },
-              {
-                name: "Dr. Rajesh Kumar",
-                title: "Clinical Director",
-                institution: "Delhi IVF Institute",
-                experience: "20+ years",
-                specialty: "IVF & Genetics",
-                quote: "The simulation accuracy is remarkable and clinically relevant.",
-              },
-              {
-                name: "Dr. Anita Patel",
-                title: "Lead Embryologist",
-                institution: "Bangalore Reproductive Sciences",
-                experience: "12+ years",
-                specialty: "Embryo Biopsy",
-                quote: "Transforms how we prepare students for real procedures.",
-              },
-              {
-                name: "Dr. Vikram Singh",
-                title: "IVF Specialist",
-                institution: "Chennai Fertility Hospital",
-                experience: "18+ years",
-                specialty: "Micromanipulation",
-                quote: "Essential for any institution serious about embryology training.",
-              },
-            ].map((partner, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-card rounded-3xl overflow-hidden shadow-elevated border border-border hover:shadow-2xl hover:border-accent/30 transition-all duration-500"
-              >
+            {[{
+            name: "Dr. Priya Sharma",
+            title: "Senior Embryologist",
+            institution: "Mumbai Fertility Center",
+            experience: "15+ years",
+            specialty: "ICSI Specialist",
+            quote: "A revolutionary tool for training the next generation of embryologists."
+          }, {
+            name: "Dr. Rajesh Kumar",
+            title: "Clinical Director",
+            institution: "Delhi IVF Institute",
+            experience: "20+ years",
+            specialty: "IVF & Genetics",
+            quote: "The simulation accuracy is remarkable and clinically relevant."
+          }, {
+            name: "Dr. Anita Patel",
+            title: "Lead Embryologist",
+            institution: "Bangalore Reproductive Sciences",
+            experience: "12+ years",
+            specialty: "Embryo Biopsy",
+            quote: "Transforms how we prepare students for real procedures."
+          }, {
+            name: "Dr. Vikram Singh",
+            title: "IVF Specialist",
+            institution: "Chennai Fertility Hospital",
+            experience: "18+ years",
+            specialty: "Micromanipulation",
+            quote: "Essential for any institution serious about embryology training."
+          }].map((partner, index) => <div key={index} className="group relative bg-card rounded-3xl overflow-hidden shadow-elevated border border-border hover:shadow-2xl hover:border-accent/30 transition-all duration-500">
                 <div className="flex flex-col md:flex-row">
                   {/* Large Image/Avatar Area */}
                   <div className="relative w-full md:w-2/5 aspect-square md:aspect-auto bg-gradient-to-br from-primary via-primary/80 to-accent overflow-hidden">
@@ -532,8 +514,7 @@ const HomePage = () => {
                     </blockquote>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -543,7 +524,9 @@ const HomePage = () => {
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse-soft" />
-          <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: "1s" }} />
+          <div className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-highlight/10 rounded-full blur-3xl animate-pulse-soft" style={{
+          animationDelay: "1s"
+        }} />
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         </div>
         
@@ -562,18 +545,37 @@ const HomePage = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "Mumbai Medical College", shortName: "MMC", type: "Medical University", established: "Est. 1845" },
-              { name: "Delhi IVF Academy", shortName: "DIA", type: "Research Institute", established: "Est. 1998" },
-              { name: "Bangalore Institute of Embryology", shortName: "BIE", type: "Specialty Institute", established: "Est. 2005" },
-              { name: "Chennai Fertility Research", shortName: "CFR", type: "Research Center", established: "Est. 2001" },
-              { name: "Hyderabad Reproductive Sciences", shortName: "HRS", type: "Medical Center", established: "Est. 2010" },
-              { name: "Pune Medical University", shortName: "PMU", type: "Medical University", established: "Est. 1950" },
-            ].map((institution, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 hover:border-accent/50 hover:bg-white/10 transition-all duration-500 overflow-hidden"
-              >
+            {[{
+            name: "Mumbai Medical College",
+            shortName: "MMC",
+            type: "Medical University",
+            established: "Est. 1845"
+          }, {
+            name: "Delhi IVF Academy",
+            shortName: "DIA",
+            type: "Research Institute",
+            established: "Est. 1998"
+          }, {
+            name: "Bangalore Institute of Embryology",
+            shortName: "BIE",
+            type: "Specialty Institute",
+            established: "Est. 2005"
+          }, {
+            name: "Chennai Fertility Research",
+            shortName: "CFR",
+            type: "Research Center",
+            established: "Est. 2001"
+          }, {
+            name: "Hyderabad Reproductive Sciences",
+            shortName: "HRS",
+            type: "Medical Center",
+            established: "Est. 2010"
+          }, {
+            name: "Pune Medical University",
+            shortName: "PMU",
+            type: "Medical University",
+            established: "Est. 1950"
+          }].map((institution, index) => <div key={index} className="group relative bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 hover:border-accent/50 hover:bg-white/10 transition-all duration-500 overflow-hidden">
                 {/* Decorative corner accent */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-accent/20 rounded-bl-[100px] group-hover:bg-accent/30 transition-colors" />
                 
@@ -610,8 +612,7 @@ const HomePage = () => {
                     <span className="text-sm font-medium">Partner Institution</span>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           <div className="mt-16 text-center">
@@ -696,8 +697,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default HomePage;
